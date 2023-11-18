@@ -2,6 +2,7 @@ package com.mycompany.spring_mvc_project_final.entities;
 
 import com.mycompany.spring_mvc_project_final.enums.Status;
 import java.time.LocalDate;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -32,8 +34,7 @@ public class AuctionEntity {
   @Enumerated(EnumType.STRING)
   private Status status;
   @Column(name = "endTime")
-  @DateTimeFormat(pattern = "YYYY-MM-DD HH:MI:SS")
-  private LocalDate endTime;
+  private String endTime;
   @Column(name = "startPrice")
   private double startPrice;
   @Column(name = "reservePrice")
@@ -76,11 +77,11 @@ public class AuctionEntity {
     this.status = status;
   }
 
-  public LocalDate getEndTime() {
+  public String getEndTime() {
     return endTime;
   }
 
-  public void setEndTime(LocalDate endTime) {
+  public void setEndTime(String endTime) {
     this.endTime = endTime;
   }
 

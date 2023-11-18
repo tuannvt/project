@@ -30,7 +30,7 @@ public class JPAConfig {
     public DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/Auction?characterEncoding=UTF-8");
+        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/AuctionDB?characterEncoding=UTF-8");
         dataSource.setUsername("root");
         dataSource.setPassword("");
 

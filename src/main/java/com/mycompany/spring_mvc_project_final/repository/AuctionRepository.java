@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 public interface AuctionRepository extends CrudRepository<AuctionEntity, Long> {
-  @Query(value = "SELECT DISTINCT p.product_id, p.product_img, p.product_name,a.endTime " +
-      "FROM auction a left join product p " +
+  @Query(value = "SELECT  p.product_id, p.product_img, p.product_name, a.endTime, a.startPrice  " +
+      "FROM auction a  join product p " +
       "on a.product_id = p.product_id "
       , nativeQuery = true)
   List<AuctionEntity> findByView();

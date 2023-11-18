@@ -34,7 +34,7 @@ public class AccountEntity implements Serializable {
     @Column(unique = true, length = 100)
     private String email;
     private String password;
-    private String name;
+    private String fullName;
     private String phone;
     private String address;
     @Column(nullable = false)
@@ -89,11 +89,11 @@ public class AccountEntity implements Serializable {
     }
 
     public String getName() {
-        return name;
+        return fullName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.fullName = name;
     }
 
     public String getPhone() {
