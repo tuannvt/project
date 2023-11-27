@@ -1,0 +1,80 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+.container1{
+    font-family: Arial, Helvetica, sans-serif, Times, serif;
+    max-width: 350px;
+    width: 100%;
+    margin: 0 auto;
+}
+header{
+    height: 70px;
+    background-color: white;
+}
+main{
+    padding-top: 10px;
+    background-color: #F5F5FA;
+    height: 1000px;
+}
+main .col1 {
+    padding-top: 30px;
+    padding-left: 15px;
+}
+main .col1 img{
+    float:left;
+    width:50px;
+}
+main .col1 h3{
+    float:left;
+}
+main .col2 {
+    width: 100%;
+    padding-top: 70px;
+}
+main .col2 .item h4{
+    width: 100%;
+    text-align: center;
+}
+main .col2 .item img{
+    width: 100%;
+    margin-left: 0px;
+}
+main .col3 {
+    width: 100%;
+    padding-top: 20px;
+}
+main .col3 .form-group {
+    width: 100%;
+}
+main .col3 .form-group button{
+    margin-top: 20px;
+    margin-left: 140px;
+    padding 20px;
+}
+main .col3 .form-group .item-row-col1{
+    width: 20%;
+    float:left;
+}
+main .col3 .form-group .item-row-col1 label{
+    font-size: 90%;
+}
+main .col3 .form-group .item-row-col2{
+    width: 25%;
+    float:left;
+}
+main .col3 .form-group .item-row-col3{
+    width: 25%;
+    float:left;
+}
+main .col3 .form-group .item-row-col3 label{
+    font-size: 90%;
+}
+main .col3 .form-group .item-row-col4{
+    width: 25%;
+    float:left;
+}
+
+
+

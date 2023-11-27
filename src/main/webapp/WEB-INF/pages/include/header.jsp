@@ -18,7 +18,9 @@
         <div class="container" >
             <div class="row" >
                     <div class="logo">
-                        <img src="resources/img/about/logo-dau-gia-lac-viet.png" alt="logo" width=200px>
+                    <a  href="<c:url value="/" />">
+                        <img src="../../resources/img/about/logo-dau-gia-lac-viet.png" alt="logo" width=200px>
+                    </a>
                     </div>
                     <div class="main-menu">
                         <div class="menu-select">
@@ -53,6 +55,9 @@
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                                         <a style="color: black;" href="<c:url value="/admin/home" />">Admin Home</a>
                                     </sec:authorize>
+                                    <sec:authorize access="hasRole('ROLE_SELLER')">
+                                    <a style="color: black;" href="<c:url value="/seller/home" />">Seller Home</a>
+                                    </sec:authorize>
                                     <a style="color: black;" href="<c:url value="/logout" />">Logout</a>
                                 </sec:authorize>
 
@@ -61,6 +66,7 @@
                                     <a style="color: black;" href="<c:url value="/login" />">Login</a>
                                 </sec:authorize>
                             </div>
+                    </div>
                     </div>
             </div>
         </div>

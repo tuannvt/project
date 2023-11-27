@@ -41,4 +41,9 @@ header .login{
     float: left;
     width:20%;
 }
+header .login  a{
+    float: left;
+    margin-left: 20px;
+}
+
 
