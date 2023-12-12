@@ -34,13 +34,6 @@ public class SellerController {
   AccountRepository accountRepository;
   @RequestMapping(value = {"/home"}, method = RequestMethod.GET)
   public String viewSeller(Model model, HttpServletRequest request) {
-    Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    String username = principal.toString();
-    if (principal instanceof UserDetails) {
-      username = ((UserDetails) principal).getUsername();
-    }
-    HttpSession session=request.getSession();
-    session.setAttribute("username",username);
     List<ProductEntity> products=(List<ProductEntity>)productRepository.findAll();
     model.addAttribute("products",products);
     return "seller/home";
@@ -70,7 +63,7 @@ public class SellerController {
     productRepository.save(product);
     return "redirect:/";
   }
-  @RequestMapping(value = "/delete/{product_id}",method = RequestMethod.GET)
+  @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
   public String deleteProduct(@PathVariable long id){
     productRepository.deleteById(id);
     return "redirect:/";

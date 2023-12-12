@@ -35,7 +35,7 @@ public class StudentController {
 	public ModelAndView testSendMail(ModelAndView model) throws IOException {
 		// Send mail
 		System.out.println("Send Mail ==>");
-		String email = "loannguyen1501@gmail.com";
+		String email = "tuanvancit@gmail.com";
 		sendEmail(email,"Subject", "Hello all");
 		model.addObject("msg", email);
 		return new ModelAndView("student/email");

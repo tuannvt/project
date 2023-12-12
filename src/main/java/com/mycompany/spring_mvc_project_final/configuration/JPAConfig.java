@@ -80,8 +80,8 @@ public class JPAConfig {
         //Using gmail
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
-        mailSender.setUsername("loannguyen1501@gmail.com");
-        mailSender.setPassword("ooehxjdtqdxiqfmk");
+        mailSender.setUsername("tuanvancit@gmail.com");
+        mailSender.setPassword("retf jpps xqpa cbpx");
 
         Properties javaMailProperties = new Properties();
         javaMailProperties.put("mail.smtp.starttls.enable", "true");

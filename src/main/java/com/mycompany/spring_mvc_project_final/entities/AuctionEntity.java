@@ -1,8 +1,6 @@
 package com.mycompany.spring_mvc_project_final.entities;
 
-import com.mycompany.spring_mvc_project_final.enums.Status;
-import java.time.LocalDate;
-import java.util.Date;
+import com.mycompany.spring_mvc_project_final.enums.UserStatus;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,9 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "auction")
@@ -30,9 +26,6 @@ public class AuctionEntity {
   @ManyToOne
   @JoinColumn(name = "product_id")
   private ProductEntity product;
-  @Column(name = "status")
-  @Enumerated(EnumType.STRING)
-  private Status status;
   @Column(name = "endTime")
   private String endTime;
   @Column(name = "startPrice")
@@ -41,10 +34,19 @@ public class AuctionEntity {
   private double reservePrice;
   @Column(name = "commission")
   private double commission;
+  @Column(name = "status",nullable = false)
+  @Enumerated(EnumType.STRING)
+  private UserStatus status;
 
   public AuctionEntity() {
   }
+  public UserStatus getStatus() {
+    return status;
+  }
 
+  public void setStatus(UserStatus status) {
+    this.status = status;
+  }
   public long getAuction_id() {
     return auction_id;
   }
@@ -67,14 +69,6 @@ public class AuctionEntity {
 
   public void setProduct(ProductEntity product) {
     this.product = product;
-  }
-
-  public Status getStatus() {
-    return status;
-  }
-
-  public void setStatus(Status status) {
-    this.status = status;
   }
 
   public String getEndTime() {
