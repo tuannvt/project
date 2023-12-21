@@ -12,11 +12,13 @@ import com.mycompany.spring_mvc_project_final.entities.BidEntity;
 import com.mycompany.spring_mvc_project_final.entities.CreditEntity;
 import com.mycompany.spring_mvc_project_final.entities.ProductEntity;
 import com.mycompany.spring_mvc_project_final.enums.Role;
+import com.mycompany.spring_mvc_project_final.enums.UserStatus;
 import com.mycompany.spring_mvc_project_final.repository.AccountRepository;
 import com.mycompany.spring_mvc_project_final.repository.AuctionRepository;
 import com.mycompany.spring_mvc_project_final.repository.BidRepository;
 import com.mycompany.spring_mvc_project_final.repository.CreditRepository;
 import com.mycompany.spring_mvc_project_final.repository.ProductRepository;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -94,13 +96,8 @@ public class LoginController {
 
         }
         String name=(String) session.getAttribute("username");
-        List<ProductEntity> productEntityList = productRepository.findByView1("2");
-        Date targetDate = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(targetDate);
-        c.add(Calendar.DATE, 1);
-        targetDate = c.getTime();
-        model.addAttribute("targetDate",targetDate.getTime());
+
+        List<ProductEntity> productEntityList = productRepository.findByView1("2", UserStatus.ACTIVE);
         model.addAttribute("name",name);
         model.addAttribute("productEntityList",productEntityList);
         return "home";
@@ -112,6 +109,7 @@ public class LoginController {
         AccountEntity ac =accountRepository.findByEmail(username);
         long account_id=ac.getId();
         CreditEntity credit=creditRepository.findByAccount_id(account_id);
+
         model.addAttribute("credit",credit);
         return "account";
     }

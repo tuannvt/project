@@ -15,55 +15,80 @@ header{
 }
 main{
     padding-top: 10px;
-    background-color: #F5F5FA;
+    background-color: #ECECEC;
     height: 800px;
 }
 main .col1 {
     padding-top: 30px;
-    padding-left: 400px;
+    padding-left: 335px;
 }
-main .col1 img{
+main .col1 .line-left img{
+    padding-top: 10px;
+    padding-right: 5px;
     float:left;
-    width:50px;
+    width:100px;
 }
-main .col1 h3{
+main .col1 .line-right img{
+    padding-top: 10px;
+    padding-left: 5px;
+    float:left;
+    width:100px;
+}
+main .col1 h2{
     float:left;
 }
-main .col2 {
-    width: 100%;
-}
-main .col2 .flex-container{
+main .col2 .auction-time{
     width: 100%;
     padding-top: 20px;
     display: flex;
     flex-wrap: wrap;
     float:left;
 }
-main .col2 .flex-container .item{
+main .col2 .auction-time{
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    float:left;
+}
+main .col2 .auction-time .time{
+    width: 23%;
+}
+
+main .col2 .auction-time .time h5{
+    background-color: white;
+    border-style: groove;
+    border-radius: 5px;
+    float:left;
+}
+main .col2 .auction-product {
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    float:left;
+}
+main .col2 .auction-product .item{
     width: 23%;
     margin: 7px;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 0 50px 0 50px;
     background-color: white;
+    border-style: groove;
 }
-main .col2 .flex-container .item h5{
+main .col2 .auction-product h5{
     text-align: center;
 }
-main .col2 .flex-container .item table{
-    margin: 0 auto;
-}
-main .col2 .flex-container .item th{
-    padding-right: 10px;
-}
-main .col2 .flex-container .item img{
+main .col2 .auction-product img{
     clear: both;
     padding: 7px;
     width:250px;
     height:300px;
+    border-radius: 0 30px 0 30px;
 }
-main .col2 .flex-container .item h4{
+main .col2 .auction-product h4{
     text-align: center;
 }
-main .col2 .flex-container .item a{
+main .col2 .auction-product a{
     margin-left: 80px;
 }

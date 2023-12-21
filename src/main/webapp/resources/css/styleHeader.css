@@ -15,35 +15,37 @@ header{
 header .logo{
     padding-top: 10px;
     float: left;
-    width:20%;
+    width:15%;
 }
 header .main-menu{
     padding-top: 10px;
     float: left;
-    width: 60%;
+    width: 55%;
 }
 header .main-menu .menu-select{
     padding-top: 10px;
     float: left;
-    width:26%;
+    width:25%;
 
 }
 
 header .main-menu .menu-select-1{
-    padding-top: 10px;
+    padding-top: 15px;
     float: left;
-    width:16%;
+    margin-left: 20px;
+    width:13%;
 
 }
 
 header .login{
-    padding-top: 20px;
+    padding-top: 25px;
     float: left;
-    width:20%;
+    width:30%;
 }
 header .login  a{
     float: left;
     margin-left: 20px;
+    text-decoration:none;
 }
 
 

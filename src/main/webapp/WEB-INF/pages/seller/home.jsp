@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href='${pageContext.request.getContextPath()}/webjars/bootstrap/5.1.3/css/bootstrap.min.css' />
         <script type="text/javascript" src="${pageContext.request.getContextPath()}/webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="../resources/css/styleSellerHome.css">
+        <link rel="stylesheet" href="../../resources/css/styleHeader.css">
 
     </head>
 

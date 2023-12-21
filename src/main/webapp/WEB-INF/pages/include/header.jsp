@@ -9,7 +9,7 @@
       rel="stylesheet">
 <link rel="stylesheet" type="text/css" href='${pageContext.request.getContextPath()}/webjars/bootstrap/5.1.3/css/bootstrap.min.css' />
 <script type="text/javascript" src="${pageContext.request.getContextPath()}/webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="resources/css/style.css">
+<link rel="stylesheet" href="resources/css/styleHeader.css">
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 
 <!-- Header Section Begin -->
@@ -50,6 +50,9 @@
                         </div>
                     </div>
                     <div class="login">
+                            <c:if test="${name == null}">
+                             <a style="color: black;" href="<c:url value="/register" />">Đăng Ký</a>
+                            </c:if>
                             <div class="header__top__links" >
                                 <sec:authorize access="isAuthenticated()">
                                     <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -58,6 +61,7 @@
                                     <sec:authorize access="hasRole('ROLE_SELLER')">
                                     <a style="color: black;" href="<c:url value="/seller/home" />">Seller Home</a>
                                     </sec:authorize>
+                                    <a style="color: black;" href="<c:url value="/account" />">Account</a>
                                     <a style="color: black;" href="<c:url value="/logout" />">Logout</a>
                                 </sec:authorize>
 

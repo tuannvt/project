@@ -16,10 +16,5 @@ public interface AccountRepository extends CrudRepository<AccountEntity, Long> {
 
     AccountEntity findByEmailLikeAndStatusLike(String email,
             UserStatus status);
-    @Query(value = "SELECT  auction_role.role_id  FROM account " +
-        "left join auction_role on account.id=auction_role.user_id " +
-        "where email like %?1%  "
-        , nativeQuery = true)
-    AccountEntity findByAcc(String email);
     AccountEntity findByEmail(String email);
 }

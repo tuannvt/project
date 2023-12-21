@@ -25,39 +25,32 @@
        <main>
        		<div class="container">
        			<div class="col1">
-              <img src="resources/img/icon/e5cdbc210d1ab01400816e6021440768.jpg">
-              <h3>Tài sản đang đấu giá</h3>
-              <img src="resources/img/icon/e5cdbc210d1ab01400816e6021440768.jpg">
+       			  <div class="line-left"><img src="resources/img/icon/line-left.png"></div>
+              <h2>Tài sản đang đấu giá</h2>
+              <div class="line-right"><img src="resources/img/icon/line-right.png"></div>
        			</div>
        			<div class="col2">
-       			  <div class="flex-container">
-       			    <c:forEach items="${products}" var="products">
+       			    <div class="auction-time">
+                  <div id="countdown"></div>
+                  <div class="time">
+                    <h5>
+                      <span id="d"></span>
+                      <span id="h"></span>
+                      <span id="p"></span>
+                      <span id="s"></span>
+                    </h5>
+                  </div>
+                  <input type="hidden" id="targetDate" name="targetDate" value="${targetDate}">
+                </div>
+       			    <div class="auction-product">
+                  <c:forEach items="${productEntityList}" var="products">
                     <div class="item">
-                          <h5>Thời gian còn lại</h5>
-                          <div id="countdown"></div>
-                          <div>
-                            <table>
-                              <tr>
-                                <th><span >Ngày</span> </th>
-                                <th><span >Giờ</span></th>
-                                <th><span >Phút</span></th>
-                                <th><span >Giây</span></th>
-                              </tr>
-                              <tr>
-                                <th><div id="d"></div></th>
-                                <th><div id="h"></div></th>
-                                <th><div id="p"></div></th>
-                                <th><div id="s"></div></th>
-                              </tr>
-                            </table>
-                          </div>
-                         <input type="hidden" id="targetDate" name="targetDate" value="${targetDate}">
-                          <img src="${products.product_img}" alt="">
-                          <h5>${products.product_name}</h5>
-                          <a class="btn btn-outline-danger" onclick="location.href='view/${products.product_id}'" role="button" >Đấu Giá</a>
+                       <img src="${products.product_img}" alt="">
+                       <h5>${products.product_name}</h5>
+                       <a class="btn btn-outline-danger" onclick="location.href='user/auction/${products.product_id}'" role="button" >Đấu Giá</a>
                     </div>
-                </c:forEach>
-       			  </div>
+                  </c:forEach>
+       			    </div>
        			</div>
           </div>
        </main>

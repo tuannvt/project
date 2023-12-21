@@ -76,5 +76,43 @@ main .col3 .form-group .item-row-col4{
     float:left;
 }
 
+.container-user{
+    font-family: Arial, Helvetica, sans-serif, Times, serif;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+}
+main .user-col2 {
+    width: 50%;
+    padding-top: 100px;
+    margin-left: 150px;
+    float:left;
+}
+main .user-col2 .item img{
+    width: 60%;
+}
 
-
+main .user-col3 {
+    width: 30%;
+    padding-top: 100px;
+    float:left;
+}
+main .user-col3 .user-startPrice{
+    clear: both;
+    width: 100%;
+}
+main .user-col3 .user-startPrice .user-startPrice-col1{
+````margin-top: 10px;
+    width: 20%;
+    padding-top:15px;
+    float:left;
+}
+main .user-col3 .user-startPrice .user-startPrice-col2{
+    margin-top: 10px;
+    width: 80%;
+    float:left;
+}
+main .user-col3 .user-submit button {
+   margin-top: 30px;
+   padding 20px;
+}
