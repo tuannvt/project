@@ -113,6 +113,12 @@ public class LoginController {
         model.addAttribute("productEntityList",productEntityList);
         return "home";
     }
+    @RequestMapping(value = {"/user/hethan/{id}"}, method = RequestMethod.GET)
+    @ResponseBody
+    public String hathan(@PathVariable long id) {
+        auctionRepository.updateAuctionById(id);
+        return "";
+    }
     @RequestMapping(value = {"/account"})
     public String account(Model model,HttpServletRequest request) {
         HttpSession session=request.getSession();
@@ -129,10 +135,5 @@ public class LoginController {
         model.addAttribute("account", new AuctionEntity());
         return "register";
     }
-    @RequestMapping(value = {"/user/hethan/{id}"}, method = RequestMethod.GET)
-    @ResponseBody
-    public String hathan(@PathVariable long id) {
-        auctionRepository.updateAuctionById(id);
-        return "";
-    }
+
 }
