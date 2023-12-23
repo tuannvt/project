@@ -32,10 +32,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class LoginController {
@@ -93,12 +95,21 @@ public class LoginController {
         if (principal instanceof UserDetails) {
             username = ((UserDetails) principal).getUsername();
             session.setAttribute("username", username);
-
         }
         String name=(String) session.getAttribute("username");
+        List<ProductEntity> productEntityList = productRepository.findByView1("2", UserStatus.ACTIVE.name());
+        List<AuctionEntity> auctionEntityList=auctionRepository.findByViewEndTime();
+       /* for (AuctionEntity auc:auctionEntityList){
 
-        List<ProductEntity> productEntityList = productRepository.findByView1("2", UserStatus.ACTIVE);
-        model.addAttribute("name",name);
+        }
+        Date targetDate = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(targetDate);
+        c.add(Calendar.DATE, 1);
+        targetDate = c.getTime();
+        model.addAttribute("targetDate",targetDate.getTime());
+        model.addAttribute("name",name);*/
+        model.addAttribute("auctionEntityList",auctionEntityList);
         model.addAttribute("productEntityList",productEntityList);
         return "home";
     }
@@ -118,22 +129,10 @@ public class LoginController {
         model.addAttribute("account", new AuctionEntity());
         return "register";
     }
-//    @RequestMapping(value = "/register",method = RequestMethod.POST)
-//    public String register(@ModelAttribute("account") AccountEntity newAccount, Model model) {
-//        if (accountRepository.existsByEmail(newAccount.getEmail())) {
-//            model.addAttribute("error", "Email already exists");
-//            return "register";
-//        } else {
-//            UserStatus activeStatus = UserStatus.ACTIVE;
-//            newAccount.setStatus(activeStatus);
-//            AccountEntity account=accountRepository.save(newAccount);
-//            Optional<RoleEntity> roleOptional = roleRepository.findById(Long.valueOf(2));
-//            if (roleOptional.isPresent()) {
-//                savedAccount.getUserRoles().add(roleOptional.get());
-//                accountRepository.save(savedAccount);
-//            }
-//
-//            return "login";
-//        }
-//    }
+    @RequestMapping(value = {"/user/hethan/{id}"}, method = RequestMethod.GET)
+    @ResponseBody
+    public String hathan(@PathVariable long id) {
+        auctionRepository.updateAuctionById(id);
+        return "";
+    }
 }

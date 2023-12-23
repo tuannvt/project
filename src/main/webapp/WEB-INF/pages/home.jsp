@@ -13,10 +13,18 @@
         <link rel="stylesheet" type="text/css" href='${pageContext.request.getContextPath()}/webjars/bootstrap/5.1.3/css/bootstrap.min.css' />
         <script type="text/javascript" src="${pageContext.request.getContextPath()}/webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="resources/css/styleHome.css">
+<script src="https://code.jquery.com/jquery-1.10.2.js"
+	type="text/javascript"></script>
 
+	<script
+  	type="text/javascript">
+  	$( document ).ready(function() {
+       setInterval(updateCountdown, 1000);
+    });
+  </script>
     </head>
 
-  <script type="text/javascript" src="${pageContext.request.getContextPath()}/resources/js/my_time_js.js"></script>
+
 
     <body>
        <header>
@@ -30,18 +38,7 @@
               <div class="line-right"><img src="resources/img/icon/line-right.png"></div>
        			</div>
        			<div class="col2">
-       			    <div class="auction-time">
-                  <div id="countdown"></div>
-                  <div class="time">
-                    <h5>
-                      <span id="d"></span>
-                      <span id="h"></span>
-                      <span id="p"></span>
-                      <span id="s"></span>
-                    </h5>
-                  </div>
-                  <input type="hidden" id="targetDate" name="targetDate" value="${targetDate}">
-                </div>
+
        			    <div class="auction-product">
                   <c:forEach items="${productEntityList}" var="products">
                     <div class="item">
@@ -50,11 +47,34 @@
                        <a class="btn btn-outline-danger" onclick="location.href='user/auction/${products.product_id}'" role="button" >Đấu Giá</a>
                     </div>
                   </c:forEach>
-       			    </div>
+       			   </div>
+
+       			          			    <div class="auction-product">
+                                 <c:forEach items="${auctionEntityList}" var="auction" varStatus="loop">
+                                   <div class="item">
+                                         <div class="auction-time">
+                                                       <div id="countdown"></div>
+                                                       <div class="time">
+                                                         <h5>
+                                                           <span id="d${loop.index}"></span>
+                                                           <span id="h${loop.index}"></span>
+                                                           <span id="p${loop.index}"></span>
+                                                           <span id="s${loop.index}"></span>
+                                                         </h5>
+                                                       </div>
+                                                       <input type="hidden"  class="targetDate" value="${auction.endTime}">
+                                                       <input type="hidden"  class="targetAuctionId" value="${auction.auction_id}">
+                                                     </div>
+
+                                   </div>
+                                 </c:forEach>
+                      			   </div>
+
+
        			</div>
           </div>
        </main>
 
     </body>
-
+<script type="text/javascript" src="${pageContext.request.getContextPath()}/resources/js/my_time_js.js"></script>
 </html>

@@ -19,7 +19,7 @@ public interface ProductRepository extends CrudRepository<ProductEntity, Long> {
       + "  on auction.account_id = account.id  "
       + "  left join account_role  "
       + "  on account.id=account_role.user_id  "
-      + "  where account_role.role_id like %?1% and auction.status like %?2%)"
+      + "  where account_role.role_id like %?1% and auction.status = ?2)"
       , nativeQuery = true)
-  List<ProductEntity> findByView1(String role_id, UserStatus status);
+  List<ProductEntity> findByView1(String role_id, String status);
 }
