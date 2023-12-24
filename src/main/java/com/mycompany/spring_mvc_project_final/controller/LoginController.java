@@ -19,10 +19,14 @@ import com.mycompany.spring_mvc_project_final.repository.BidRepository;
 import com.mycompany.spring_mvc_project_final.repository.CreditRepository;
 import com.mycompany.spring_mvc_project_final.repository.ProductRepository;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -96,27 +100,29 @@ public class LoginController {
             username = ((UserDetails) principal).getUsername();
             session.setAttribute("username", username);
         }
-        String name=(String) session.getAttribute("username");
         List<ProductEntity> productEntityList = productRepository.findByView1("2", UserStatus.ACTIVE.name());
         List<AuctionEntity> auctionEntityList=auctionRepository.findByViewEndTime();
-       /* for (AuctionEntity auc:auctionEntityList){
-
-        }
-        Date targetDate = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(targetDate);
-        c.add(Calendar.DATE, 1);
-        targetDate = c.getTime();
-        model.addAttribute("targetDate",targetDate.getTime());
-        model.addAttribute("name",name);*/
         model.addAttribute("auctionEntityList",auctionEntityList);
         model.addAttribute("productEntityList",productEntityList);
         return "home";
     }
     @RequestMapping(value = {"/user/hethan/{id}"}, method = RequestMethod.GET)
     @ResponseBody
-    public String hathan(@PathVariable long id) {
+    public String hathan(@PathVariable long id,HttpServletRequest request) {
         auctionRepository.updateAuctionById(id);
+
+        ProductEntity product=productRepository.findByView2(id);
+        AuctionEntity auction=auctionRepository.findByViewPro(product.getProduct_id());
+            BidEntity bid=new BidEntity();
+            bid.setAuction(auction);
+            bid.setAmount(auction.getStartPrice());
+            LocalDateTime now = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String formattedDateTime = now.format(formatter);
+            bid.setTimeStamp(formattedDateTime);
+            bid.setAccount(auction.getAccount());
+            bid.setStatus(UserStatus.ACTIVE);
+            bidRepository.save(bid);
         return "";
     }
     @RequestMapping(value = {"/account"})
@@ -126,14 +132,75 @@ public class LoginController {
         AccountEntity ac =accountRepository.findByEmail(username);
         long account_id=ac.getId();
         CreditEntity credit=creditRepository.findByAccount_id(account_id);
-
+        List<BidEntity> bid=bidRepository.findByAccount_id(account_id);
+        List<BidEntity> bidList = bid.stream()
+            .collect(Collectors.toMap(BidEntity::getAuction, p -> p, (existing, replacement) -> existing))
+            .values()
+            .stream()
+            .collect(Collectors.toList());
+        for (BidEntity b:bidList);
+        List<BidEntity> bidEntityList=bidRepository.findByAccount1(account_id);
+        model.addAttribute("ac",ac);
         model.addAttribute("credit",credit);
+        model.addAttribute("bidList",bidList);
+        model.addAttribute("bidEntityList",bidEntityList);
         return "account";
+    }
+    @RequestMapping(value = {"/thanhToan/{id}"},method = RequestMethod.GET)
+    public String thanhToan(Model model,HttpServletRequest request,@PathVariable long id) {
+        BidEntity bid=bidRepository.findById(id).get();
+        HttpSession session=request.getSession();
+        String username=(String) session.getAttribute("username");
+        AccountEntity ac =accountRepository.findByEmail(username);
+        long account_id=ac.getId();
+        CreditEntity credit=creditRepository.findByAccount_id(account_id);
+        double blance=credit.getBalance()-bid.getAmount();
+        if (blance>=0){
+            credit.setBalance(blance);
+            creditRepository.save(credit);
+            bid.setStatus(UserStatus.UNACTIVE);
+            bidRepository.save(bid);
+        }else {
+            model.addAttribute("message","Bạn không đử tiền để thanh toán vui lòng nạp thêm");
+        }
+        return "redirect:/account";
     }
     @RequestMapping(value = {"/register"})
     public String showRegister(Model model) {
         model.addAttribute("account", new AuctionEntity());
         return "register";
     }
-
+//    @RequestMapping(value = "/register", method = RequestMethod.POST)
+//    public String register(@ModelAttribute("account") AccountEntity newAccount, Model model) {
+//        if (accountRepository.existsByEmail(newAccount.getEmail())) {
+//            model.addAttribute("error", "Email already exists");
+//            return "register";
+//        } else {
+//            UserStatus activeStatus = UserStatus.ACTIVE;
+//            newAccount.setStatus(activeStatus);
+//
+//            String encryptedPassword = bCryptPasswordEncoder.encode(newAccount.getPassword());
+//            newAccount.setPassword(encryptedPassword);
+//
+//            AccountEntity savedAccount = accountRepository.save(newAccount);
+//
+//            // Creating account_role relationship
+//            // Thêm user đã đăng ký vào ROLE_USER
+//            if (savedAccount.getUserRoles() == null) {
+//                savedAccount.setUserRoles(new HashSet<>());
+//            }
+//
+//            Optional<RoleEntity> roleOptional = roleRepository.findById(Long.valueOf(2));
+//            if (roleOptional.isPresent()) {
+//                savedAccount.getUserRoles().add(roleOptional.get());
+//                accountRepository.save(savedAccount);
+//            } else {
+//                // Xử lý khi không tìm thấy role
+//            }
+//
+//            return "redirect:/login";
+//        }
+//    }
 }
+
+

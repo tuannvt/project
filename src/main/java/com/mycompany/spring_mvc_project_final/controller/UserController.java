@@ -3,6 +3,7 @@ package com.mycompany.spring_mvc_project_final.controller;
 import com.mycompany.spring_mvc_project_final.entities.AccountEntity;
 import com.mycompany.spring_mvc_project_final.entities.AuctionEntity;
 import com.mycompany.spring_mvc_project_final.entities.ProductEntity;
+import com.mycompany.spring_mvc_project_final.enums.UserStatus;
 import com.mycompany.spring_mvc_project_final.repository.AccountRepository;
 import com.mycompany.spring_mvc_project_final.repository.AuctionRepository;
 import com.mycompany.spring_mvc_project_final.repository.ProductRepository;
@@ -28,10 +29,7 @@ public class UserController {
   AuctionRepository auctionRepository;
   @Autowired
   AccountRepository accountRepository;
-  @RequestMapping(value = {"/register"}, method = RequestMethod.GET)
-  public String viewSeller(Model model, HttpServletRequest request) {
-    return "user/register";
-  }
+
   @RequestMapping(value = "/auction/{id}",method = RequestMethod.GET)
   public String addAuction(Model model,@PathVariable long id){
     ProductEntity pr = productRepository.findById(id).orElse(new ProductEntity());
@@ -49,6 +47,7 @@ public class UserController {
       auction.setAccount(ac);
       ProductEntity pro = productRepository.findById(id1).orElse(new ProductEntity());
       auction.setProduct(pro);
+      auction.setStatus(UserStatus.PENDING);
       auction.setStartPrice(startPrice);
       auctionRepository.save(auction);
     }

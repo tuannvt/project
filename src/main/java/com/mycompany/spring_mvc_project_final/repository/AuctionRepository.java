@@ -17,9 +17,12 @@ public interface AuctionRepository extends CrudRepository<AuctionEntity, Long> {
   @Query(value = "SELECT * FROM auction "
       + " where endTime is not NULL AND status = 'ACTIVE'", nativeQuery = true)
   List<AuctionEntity> findByViewEndTime();
-
   @Modifying
   @Transactional
   @Query(value = "UPDATE auction set status = 'UNACTIVE' WHERE auction_id = ?1", nativeQuery = true)
   void updateAuctionById(long id);
+  @Query(value = "select * from auction  "
+      + "where product_id like %?1% and status='PENDING' "
+      + "ORDER BY startPrice DESC LIMIT 1", nativeQuery = true)
+  AuctionEntity findByViewPro(long id);
 }

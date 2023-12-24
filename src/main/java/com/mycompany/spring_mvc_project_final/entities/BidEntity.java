@@ -1,8 +1,11 @@
 package com.mycompany.spring_mvc_project_final.entities;
 
+import com.mycompany.spring_mvc_project_final.enums.UserStatus;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,12 +29,22 @@ public class BidEntity {
   @JoinColumn(name = "auction_id")
   private AuctionEntity auction;
   @Column(name = "timeStamp")
-  @DateTimeFormat(pattern = "yyyy-MM-dd")
-  private LocalDate timeStamp;
+  private String timeStamp;
   @Column(name = "amount")
   private double amount;
+  @Column(name = "status",nullable = false)
+  @Enumerated(EnumType.STRING)
+  private UserStatus status;
 
   public BidEntity() {
+  }
+
+  public UserStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(UserStatus status) {
+    this.status = status;
   }
 
   public long getBid_id() {
@@ -58,11 +71,11 @@ public class BidEntity {
     this.auction = auction;
   }
 
-  public LocalDate getTimeStamp() {
+  public String getTimeStamp() {
     return timeStamp;
   }
 
-  public void setTimeStamp(LocalDate timeStamp) {
+  public void setTimeStamp(String timeStamp) {
     this.timeStamp = timeStamp;
   }
 

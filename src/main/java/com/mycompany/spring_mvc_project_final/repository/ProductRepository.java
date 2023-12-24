@@ -22,4 +22,11 @@ public interface ProductRepository extends CrudRepository<ProductEntity, Long> {
       + "  where account_role.role_id like %?1% and auction.status = ?2)"
       , nativeQuery = true)
   List<ProductEntity> findByView1(String role_id, String status);
+  @Query(value = " select  *  from  product "
+      + "  where product_id in ( "
+      + "  select  distinct product_id  "
+      + "  from auction  "
+      + "  where auction.auction_id = ?1 )"
+      , nativeQuery = true)
+  ProductEntity findByView2(long id);
 }
