@@ -20,11 +20,18 @@ main{
 }
 main .col1 {
     padding-top: 30px;
-    padding-left: 15px;
 }
-main .col1 img{
+main .col1 .line-left img{
+    padding-top: 10px;
+    padding-right: 5px;
     float:left;
-    width:50px;
+    width:65px;
+}
+main .col1 .line-right img{
+    padding-top: 10px;
+    padding-left: 5px;
+    float:left;
+    width:65px;
 }
 main .col1 h3{
     float:left;

@@ -38,7 +38,29 @@
               <div class="line-right"><img src="resources/img/icon/line-right.png"></div>
        			</div>
        			<div class="col2">
-
+       			    <div class="auction-time">
+                   <c:forEach items="${auctionEntityList}" var="auction" varStatus="loop">
+                      <div class="item" style="padding-left: 70px; padding-top: 10px;border-radius:50px 50px 0 0; background-color: #BEBEBE;width: 276px;margin: 7px;height: 70px;">
+                           <div id="countdown"></div>
+                              <table>
+                                  <tr>
+                                    <td>Ngày- </td>
+                                    <td>Giờ- </td>
+                                    <td>Phút- </td>
+                                    <td>Giây</td>
+                                  </tr>
+                                  <tr>
+                                     <td><span id="d${loop.index}"></span></td>
+                                     <td><span id="h${loop.index}"></span></td>
+                                     <td><span id="p${loop.index}"></span></td>
+                                     <td><span id="s${loop.index}"></span></td>
+                                  </tr>
+                              </table>
+                           <input type="hidden"  class="targetDate" value="${auction.endTime}">
+                           <input type="hidden"  class="targetAuctionId" value="${auction.auction_id}">
+                      </div>
+                   </c:forEach>
+                </div>
        			    <div class="auction-product">
                   <c:forEach items="${productEntityList}" var="products">
                     <div class="item">
@@ -48,29 +70,6 @@
                     </div>
                   </c:forEach>
        			   </div>
-
-       			          			    <div class="auction-product">
-                                 <c:forEach items="${auctionEntityList}" var="auction" varStatus="loop">
-                                   <div class="item">
-                                         <div class="auction-time">
-                                                       <div id="countdown"></div>
-                                                       <div class="time">
-                                                         <h5>
-                                                           <span id="d${loop.index}"></span>
-                                                           <span id="h${loop.index}"></span>
-                                                           <span id="p${loop.index}"></span>
-                                                           <span id="s${loop.index}"></span>
-                                                         </h5>
-                                                       </div>
-                                                       <input type="hidden"  class="targetDate" value="${auction.endTime}">
-                                                       <input type="hidden"  class="targetAuctionId" value="${auction.auction_id}">
-                                                     </div>
-
-                                   </div>
-                                 </c:forEach>
-                      			   </div>
-
-
        			</div>
           </div>
        </main>

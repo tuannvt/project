@@ -20,19 +20,47 @@ main{
 }
 main .col1 {
     padding-top: 30px;
-    padding-left: 450px;
+    padding-left: 300px;
 }
-main .col1 img{
+main .col1 .line-left img{
+    padding-top: 10px;
+    padding-right: 5px;
     float:left;
-    width:50px;
+    width:100px;
+}
+main .col1 .line-right img{
+    padding-top: 10px;
+    padding-left: 5px;
+    float:left;
+    width:100px;
 }
 main .col1 h3{
+    float:left;
+}
+main .col1-1 {
+    padding-top: 30px;
+    padding-left: 400px;
+}
+main .col1-1 .line-left img{
+    padding-top: 10px;
+    padding-right: 5px;
+    float:left;
+    width:100px;
+}
+main .col1-1 .line-right img{
+    padding-top: 10px;
+    padding-left: 5px;
+    float:left;
+    width:100px;
+}
+main .col1-1 h3{
     float:left;
 }
 main .col2 {
     width: 100%;
 }
 main .col2 .item-menu{
+    padding-top: 20px;
     clear: both;
     width: 100%;
 }

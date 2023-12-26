@@ -8,32 +8,78 @@ main .container{
     max-width: 800px;
     width: 100%;
     margin: 0 auto;
-    padding-top:100px;
+    padding-top:30px;
 }
 main .container .acc{
     border-radius:  50px;
     background-color: white;
     border-style: solid;
     border-color: red;
-    height: 200px;
+    height: 192px;
 }
-main .container .col1{
+main .container .acc .col1{
     width:40%;
     float:left;
 }
-main .container .col1  img{
+main .container .acc .col1  img{
      border-radius:  50px 0 0 50px;
 }
-main .container .col2{
+main .container .acc .col2{
     padding-top:20px;
     width:60%;
     float:left;
 }
-main .container .col2 h5{
+main .container .acc .col2 h5{
      width:20%;
      float:left;
 }
-main .container .col2 .col2-1{
+main .container .acc .col2 .col2-1{
     width:80%;
+    float:left;
+}
+main .container .credit{
+    clear: both;
+    width:100%;
+}
+main .container .credit .credit-1{
+    margin-left:50px;
+    padding-top:30px;
+    width:40%;
+    float:left;
+}
+main .container .credit .credit-1 h3{
+    color:Red;
+    padding-bottom:10px;
+}
+main .container .credit .credit-1 .credit-item{
+    padding-bottom:20px;
+}
+main .container .credit .credit-1 .credit-item .col2-1{
+    width:40%;
+    float:left;
+}
+main .container .credit .credit-1 .credit-item .col2-2{
+    width:50%;
+    float:left;
+}
+main .container .credit .credit-2{
+    margin-left:50px;
+    padding-top:30px;
+    width:40%;
+    float:left;
+}
+main .container .credit .credit-2 h3{
+    color:Red;
+    padding-bottom:10px;
+}
+main .container .credit .credit-2 .credit-item{
+    padding-bottom:84px;
+}
+main .container .credit .credit-2 .credit-item .col2-1{
+    width:40%;
+    float:left;
+}
+main .container .credit .credit-2 .credit-item .col2-2{
+    width:50%;
     float:left;
 }

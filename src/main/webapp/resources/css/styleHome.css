@@ -15,8 +15,7 @@ header{
 }
 main{
     padding-top: 10px;
-    background-color: #ECECEC;
-    height: 800px;
+    height: auto;
 }
 main .col1 {
     padding-top: 30px;
@@ -54,26 +53,18 @@ main .col2 .auction-time{
 main .col2 .auction-time .time{
     width: 23%;
 }
-
-main .col2 .auction-time .time h5{
-    background-color: white;
-    border-style: groove;
-    border-radius: 5px;
-    float:left;
-}
 main .col2 .auction-product {
     width: 100%;
-    padding-top: 20px;
     display: flex;
     flex-wrap: wrap;
     float:left;
 }
 main .col2 .auction-product .item{
-    width: 23%;
+    width: 276px;
     margin: 7px;
     padding: 10px;
-    border-radius: 0 50px 0 50px;
-    background-color: white;
+    border-radius: 0 0 50px 50px;
+    background-color: #BEBEBE;
     border-style: groove;
 }
 main .col2 .auction-product h5{

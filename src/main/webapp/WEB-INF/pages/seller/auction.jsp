@@ -26,9 +26,9 @@
        <main>
        		<div class="container1" style="margin-top:10px">
        		    <div class="col1">
-                <img src="../../resources/img/icon/e5cdbc210d1ab01400816e6021440768.jpg">
+                <div class="line-left"><img src="../../resources/img/icon/line-left.png"></div>
                 <h3><c:out value="${msg}"/></a></h3>
-                <img src="../../resources/img/icon/e5cdbc210d1ab01400816e6021440768.jpg">
+                <div class="line-right"><img src="../../resources/img/icon/line-right.png"></div>
               </div>
               <div class="col2">
                 <div class="item"><h4>${product.product_name}</h4></div>

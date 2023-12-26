@@ -26,10 +26,10 @@
        </header>
        <main>
        		<div class="container" style="margin-top:10px">
-       		    <div class="col1">
-                <img src="../../resources/img/icon/e5cdbc210d1ab01400816e6021440768.jpg">
+       		    <div class="col1-1">
+                <div class="line-left"><img src="../../resources/img/icon/line-left.png"></div>
                 <h3><c:out value="${msg}"/></a></h3>
-                <img src="../../resources/img/icon/e5cdbc210d1ab01400816e6021440768.jpg">
+                <div class="line-right"><img src="../../resources/img/icon/line-right.png"></div>
               </div>
               <div class="col2-2">
                 <mvc:form  action="${action}" method ="post" modelAttribute="product">
